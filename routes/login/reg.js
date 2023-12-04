@@ -1,11 +1,11 @@
 let express = require('express');
 let router = express.Router();
-let db = require('../config/db');
+let db = require('../../config/db');
 
 router.use(express.json());
 
 router.post('/', (req, res) => {
-    const { username, password } = req.query;
+    const { username, password } = req.body;
 
     const sqlSelect = "SELECT * FROM login";
     db.query(sqlSelect, [], (results, fields) => {

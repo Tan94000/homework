@@ -1,11 +1,11 @@
 let express = require('express');
 let router = express.Router();
-let db = require('../config/db');
+let db = require('../../config/db');
 
 
 /* GET users listing. */
 router.post('/', function(req, res) {
-    const { username, password, newpasswrod } = req.query;
+    const { username, password, newpasswrod } = req.body;
 
     const sql = 'SELECT * FROM login WHERE username = ?'
 	  const params = [username]

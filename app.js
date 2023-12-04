@@ -9,13 +9,15 @@ const cors = require('cors');
 // 引用路由模块
 
 var indexRouter = require('./routes/index');
-var changeRouter = require('./routes/change');
-var regRouter = require('./routes/reg');
-var loginRoter = require('./routes/login');
-var findallRoter = require('./routes/findall');
-var findoneRoter = require('./routes/findon');
-var findvalueRoter = require('./routes/findvalue');
-var addressallRoter = require('./routes/addressall');
+var changeRouter = require('./routes/login/change');
+var regRouter = require('./routes/login/reg');
+var loginRoter = require('./routes/login/login');
+var findallRoter = require('./routes/commodity/findall');
+var findoneRoter = require('./routes/commodity/findon');
+var findvalueRoter = require('./routes/commodity/findvalue');
+var addressallRoter = require('./routes/address/addressall');
+var addressaddRoter = require('./routes/address/addressadd');
+var addressfindRoter = require('./routes/address/addressfind')
 
 
 var app = express();
@@ -47,6 +49,10 @@ app.use('/findone', findoneRoter);
 app.use('/findvalue', findvalueRoter);
 // 查找全部地址 appkey token
 app.use('/addressall', addressallRoter);
+// 添加地址 token, name, tel, province, city, county, minute, df
+app.use('/addressadd', addressaddRoter);
+// 查询地址 appkey, token, sid
+app.use('/addressfind', addressfindRoter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

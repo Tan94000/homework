@@ -1,8 +1,8 @@
 let express = require('express');
 let router = express.Router();
-let db = require('../config/db');
+let db = require('../../config/db');
 const jwt = require("jsonwebtoken")
-const tokenKey = require('../config/token');
+const tokenKey = require('../../config/token');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {

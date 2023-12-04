@@ -1,6 +1,6 @@
 let express = require('express');
 let router = express.Router();
-let db = require('../config/db');
+let db = require('../../config/db');
 
 
 router.get('/', (req, res) => {
