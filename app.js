@@ -12,12 +12,15 @@ var indexRouter = require('./routes/index');
 var changeRouter = require('./routes/login/change');
 var regRouter = require('./routes/login/reg');
 var loginRoter = require('./routes/login/login');
+var reworkRoter = require("./routes/login/rework")
 var findallRoter = require('./routes/commodity/findall');
 var findoneRoter = require('./routes/commodity/findon');
 var findvalueRoter = require('./routes/commodity/findvalue');
 var addressallRoter = require('./routes/address/addressall');
 var addressaddRoter = require('./routes/address/addressadd');
-var addressfindRoter = require('./routes/address/addressfind')
+var addressfindRoter = require('./routes/address/addressfind');
+var addressrewordRoter = require("./routes/address/addressreword");
+var lookRoter = require("./routes/login/look");
 
 
 var app = express();
@@ -41,6 +44,10 @@ app.use('/change', changeRouter);
 app.use('/reg', regRouter);
 //登录 username password
 app.use('/login', loginRoter);
+// 修改个人资料
+app.use("/rework", reworkRoter);
+// 查看个人资料
+app.use("/look", lookRoter)
 // 查询全部商品 appkey
 app.use('/findall', findallRoter);
 //通过sid查找特定的商品 appkey sbhyz
@@ -52,7 +59,10 @@ app.use('/addressall', addressallRoter);
 // 添加地址 token, name, tel, province, city, county, minute, df
 app.use('/addressadd', addressaddRoter);
 // 查询地址 appkey, token, sid
-app.use('/addressfind', addressfindRoter)
+app.use('/addressfind', addressfindRoter);
+// 修改地址 token, name, tel, province, city, county, minute, df, sid
+app.use('/addressreword', addressrewordRoter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
