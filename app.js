@@ -44,9 +44,9 @@ app.use('/change', changeRouter);
 app.use('/reg', regRouter);
 //登录 username password
 app.use('/login', loginRoter);
-// 修改个人资料
+// 修改个人资料 token, name, introduce, tel
 app.use("/rework", reworkRoter);
-// 查看个人资料
+// 查看个人资料 appkey, token
 app.use("/look", lookRoter)
 // 查询全部商品 appkey
 app.use('/findall', findallRoter);
