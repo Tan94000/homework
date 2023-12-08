@@ -26,7 +26,8 @@ router.post('/', (req, res) => {
     const sql = 'SELECT * FROM address WHERE username = ?';
 
     db.query(sql, [req.username], (results, fields) => {
-        let sid = `${Number(results[results.length - 1]["addressSid"]) + 1}`
+        let sid = 1
+        if("addressSid" in results) sid = `${Number(results[results.length - 1]["addressSid"]) + 1}`
 
         const sqlAdd = 'INSERT INTO address (addressSid, name, tel, province, city, county, minute, df, username) VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?)'
         const params = [sid, name, tel, province, city, county, minute, df, req.username]
