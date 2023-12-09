@@ -27,7 +27,9 @@ router.post('/', (req, res) => {
 
     db.query(sql, [req.username], (results, fields) => {
         let sid = 1
-        if("addressSid" in results) sid = `${Number(results[results.length - 1]["addressSid"]) + 1}`
+        if(!results[results.length - 1]) sid = 1
+        else sid = `${Number(results[results.length - 1]["addressSid"]) + 1}`
+        console.log(sid)
 
         const sqlAdd = 'INSERT INTO address (addressSid, name, tel, province, city, county, minute, df, username) VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?)'
         const params = [sid, name, tel, province, city, county, minute, df, req.username]
