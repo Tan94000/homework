@@ -21,7 +21,11 @@ var addressaddRoter = require('./routes/address/addressadd');
 var addressfindRoter = require('./routes/address/addressfind');
 var addressrewordRoter = require("./routes/address/addressreword");
 var lookRoter = require("./routes/login/look");
-
+var addShopCarRoter = require("./routes/my/shopCar");
+var reshopCarRoter = require("./routes/my/reshopCar");
+var lookshopCarRoter = require("./routes/my/lookreshopCar");
+var addhistoryRoter = require("./routes/my/history");
+var lookhistoryRoter = require("./routes/my/lookhistory");
 
 var app = express();
 app.use(cors());
@@ -62,7 +66,16 @@ app.use('/addressadd', addressaddRoter);
 app.use('/addressfind', addressfindRoter);
 // 修改地址 token, name, tel, province, city, county, minute, df, sid
 app.use('/addressreword', addressrewordRoter);
-
+// 添加购物车
+app.use("/addShopCar", addShopCarRoter);
+// 删除购物车商品
+app.use("/reshopCar", reshopCarRoter);
+// 查询购物车
+app.use("/lookshopCar", lookshopCarRoter);
+// 添加购买记录
+app.use("/addhistory", addhistoryRoter);
+// 查询购买记录
+app.use("/lookhistory", lookhistoryRoter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
